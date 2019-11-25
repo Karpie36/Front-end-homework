@@ -1,0 +1,348 @@
+/*
+Przeglądarki internetowe nadają znacznikom HTML wartości początkowe,
+które się różnią w zależności od producenta (np. Chrome, Firefox, Opera, Internet Explorer, Microsoft Edge).
+Dlatego popularną praktyką jest tworzenie tzw. resetów,
+czyli plików CSS zawierających reguły, które nadpisują te wartości,
+aby były one jednolite niezalenie od przeglądarki.
+
+Więcej na ten temat: https://cssreset.com/what-is-a-css-reset/
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	letter-spacing: 1.5px;
+	color: #ccc8ff;
+	
+	background-image: url("./images/background.svg");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+h2 {
+	font-size: 28px;
+	font-weight: bold;
+	letter-spacing: 4.5px;
+    margin: 0;
+}
+
+h3 {
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 3.8px;
+	text-transform: uppercase;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+	margin: 0;
+}
+
+button {
+	font-size: 12px;
+	font-weight: semibold;
+	letter-spacing: 1.6px;
+	text-transform: uppercase;
+	background-color: #ccc8ff;
+	color: #000;
+	opacity: 0.1;
+	border-radius: 3px;
+	padding: 3% 3%;
+}
+
+input {
+	background-color: #ccc8ff;
+	opacity: 0.1;
+	border-radius: 4px;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	opacity: 0.8;
+}
+
+a:hover {
+	opacity: 1.0;
+}
+
+/*
+ZAGADNIENIE PONADPROGRAMOWE
+
+Rekomendowany zestaw właściwości, które pozwalają na ukrycie tekstu w taki sposób,
+że będzie niewidoczny do standardowego użytkownika, a czytniki ekranowe wciąż będą go czytać.
+
+Więcej na ten temat: https://webaim.org/techniques/css/invisiblecontent/
+*/
+.screen-reader-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/*
+Sekcja pomocnicza, aby zwizualizować pozycje głównych bloków strony. Będzie usunięta w następnych krokach.
+*/
+
+/* .page-header { */
+    /* background-color: #ffb1b1; */
+/* } */
+
+/* .page-content { */
+    /* background-color: #b0ffb0; */
+/* } */
+
+/* .page-footer { */
+    /* background-color: #7ba3ff; */
+/* } */
+
+/* .content-section { */
+    /* background-color: #ca9aca; */
+/* } */
+/* .content-section:nth-child(odd) { */
+    /* background-color: #e69fe6; */
+/* } */
+/*
+Koniec sekcji pomocniczej
+*/
+
+/*
+Ustawiając sekcje nagłówka i stopki w pozycji 'fixed' sprawiamy,
+że niezależnie od pozycji paska przewijania elementy te będą znajdowały się
+w tej samej pozycji względem okna przeglądarki.
+Natomiast pozycję tę ustawiamy za pomocą parametrów 'top', 'bottom', 'right', 'left'.
+*/
+.page-header {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+	
+	height: 40%;
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+}
+
+/*
+Lewy margines ustawiony na kontenerze z główną zawartością strony sprawia,
+że nie będzie ona nachodzić na nagłówek i stopkę niezależnie od pozycji paska przewijania.
+Na projekcie graficznym sekcja menu ma szerokość około 170px i jest oddalona od krawędzi ekranu
+o 50px, więc można założyć, że 220px marginesu będzie wartością stosunkowo bezpieczną.
+Z kolei spady (padding) nadane na kontener wyznaczają minimalną odległość, na jaką będzie oddalona
+treść strony od otaczających ją granic kontenera (wartość "0 10%" jest
+skrótem od padding-top: 0, padding-bottom: 0, padding-left: 10%, padding-right: 10%).
+Właściwość "text-align: right" przykleja zawartość do prawej strony
+(oddziałuje na elementy, które są elementami inline'owymi, np. tekst, znaczniki <a>, <span> czy elementy z nadanym stylem "display: inline-block").
+*/
+
+.content-section__header {
+	grid-area: header;
+	padding: 10% 0 5% 0;
+	color: #ec008c;
+	text-transform: uppercase;
+	justify-self: end;
+}
+
+.page-content {
+    margin-left: 250px;
+    padding: 0 5%;
+    text-align: right;
+}
+
+.page-navigation {
+	font-weight: bold;
+	height: 60%;
+	color: #ec008c;
+	letter-spacing: 6.7px;
+	text-transform: uppercase;
+}
+
+.page-navigation__items {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.band-members {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+	justify-items: center;
+	align-items: center;
+	padding: 25% 0;
+}
+
+.band-members__item {
+	display: grid;
+	grid-template-columns: repeat(1, minmax(15%, 1fr));
+	justify-items: start;
+	line-height: 1.7;
+}
+
+.band-members__name {
+	text-transform: uppercase;
+	letter-spacing: 3.5px;
+	text-weight: bold;
+}
+
+.concerts {
+	display: grid;
+	grid-template: repeat(2, 300px) / repeat(2, 360px);
+	gap: 30px;
+	padding: 0 0 5% 32%;
+}
+
+.concerts__date {
+	font-weight: bold;
+}
+
+.band-members__desc, .concerts__location {
+	opacity: 0.5;
+}
+
+.about-section {
+	position: relative;
+	padding: 0 0 15% 0;
+}
+
+.about-section img {
+	object-fit: contain;
+	width: 80%;
+	height: 100%;
+	border-top: 3px solid #ec008c;
+}
+
+.about-section__desc {
+	position: absolute;
+	top: 55%;
+	right: 70%;
+	width: 300px;
+	height: 280px;
+	background-color: #25072e;
+	padding: 4%;
+	border-bottom: 3px solid #ec008c;
+	
+	color: #dbd8fb;
+	text-align: left;
+}
+
+.concerts__image {
+	grid-area: photo;
+	object-fit: fill;
+	width: 100%;
+	height: 80%;
+	border-bottom: 3px solid #ec008c;
+}
+
+.concerts__info {
+	display: grid;
+	grid-template-rows: repeat(2, 20px);
+	align-items: center;
+	justify-items: center;
+	max-height: 50px;
+}
+
+.concerts__date, .concerts__location {
+	justify-self: start;
+}
+
+.concerts__info  .button {
+	grid-column: 2;
+	grid-row: 1 / 3;
+	justify-self: end;
+}
+
+iframe {
+	margin: 0 0 15% 0;
+	border-top: 3px solid #ec008c;
+}
+
+.gallery {
+	display: grid;
+	grid-template: repeat(3, 200px) / repeat(3, 300px);
+	gap: 20px;
+	padding: 0 0 5% 15%;
+}
+
+.gallery .gallery__image {
+	grid-area: photo;
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+	border-top: 3px solid #ec008c;
+}
+
+.gallery__image {
+	grid-area: photo;
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+}
+
+#contact {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 100px 1fr 200px;
+	grid-template-areas:
+    ". header"
+    "photo address"
+    "form .";
+	gap: 30px;
+	align-items: center;
+	justify-items: start;
+	padding: 0 0 15% 10%;
+}
+
+address {
+	grid-area: address;
+	text-align: left;
+}
+
+.form {
+	height: 100%;
+	grid-area: form;
+	align-self: start;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 0 0 0 3%;
+}
+
+.form__field {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: left;
+}
+
+.page-footer {
+	font-size: 28px;
+	color: #ec008c;
+}
+
+/*
+Projekt graficzny zakłada, że każda sekcja strony będzie wypełniać całą wysokość okna przeglądarki
+lub więcej, jeśli zawartość danej sekcji jest wyższa. Dlatego świetnym rozwiązaniem
+będzie użycie jednostki "vh", która oznacza 1% wysokości okna przeglądarki z właściwością "min-height",
+która wymusza wysokość elementu na zadaną wartość lub wyższą.
+*/
+.content-section {
+    min-height: 100vh;
+}

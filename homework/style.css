@@ -129,10 +129,6 @@ NAWIGACJA
 ######################################
 */
 
-.page-hamburger {
-	display: none;
-}
-
 .page-navigation__items {
     padding-top: 15px;
 }
@@ -309,6 +305,42 @@ SEKCJA "PHOTOS"
     margin-top: -20px; /* Znosi wpływ .gallery__item { margin-top: 20px; } */
 }
 
+@keyframes gallery-anime {
+	0% {
+		transform: rotate(0deg) scale(1);
+	}
+	10% { 
+		transform: rotate(-15deg);
+	}
+	20% {
+		transform: rotate(1turn) scale(0.9);
+	}
+	50% {
+		transform: scale(2);
+	}
+	80% {
+		transform: scale(2);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes color-anime {
+	0% {
+		filter: brightness(1);
+	}
+	30% { 
+		filter: opacity(.6);
+	}
+	50% {
+		filter: opacity(1) contrast(40%);
+	}
+	100% {
+		filter: sepia(2) contrast(100%);
+	}
+}
+
 .gallery__item {
     width: calc((100% - 3 * 20px) / 3);
     margin-top: 20px;
@@ -362,6 +394,10 @@ SEKCJA "CONTACT"
     padding-top: 40px;
 }
 
+.menu-button {
+    display: none;
+}
+
 
 /* //////////////////////////////// MOBILE STYLES //////////////////////////////// */
 
@@ -398,40 +434,13 @@ SEKCJA "CONTACT"
     */
 
     .page-header {
-		width: 100%;
-        position: fixed;
+        position: static;
         display: flex;
-		flex-wrap: wrap;
+        flex-direction: column;
         align-items: center;
-		top: 0;
-		left: 0;
-		background-color: #25072e;
-		border-bottom: 1px solid #EF008E;
-		
+        margin-bottom: 64px;
+        padding: 24px 24px 0;
     }
-	
-	.page-hamburger {
-		display: inline;
-		flex-grow: 1;
-		flex-basis: 70px;
-	}
-	
-	.page-brand {
-		flex-grow: 5;
-		margin-top: 15px;
-	}
-	
-	.page-brand > img {
-		margin-left: 35px;
-	}
-
-	nav {
-		flex-basis: 360px;
-	}
-	
-	.changing_nav {
-		display: none;
-	}
 
     .page-footer {
         position: static;
@@ -502,7 +511,6 @@ SEKCJA "CONTACT"
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 24px 12px;
-		margin-top: 100px;
     }
 
     .band-members__item {
@@ -635,5 +643,25 @@ SEKCJA "CONTACT"
     .contact__address {
         padding: 0;
         line-height: 1.77;
+    }
+
+    .menu-button {
+        display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 10px 15px;
+		height: 45px;
+    }
+	
+	.menu-line {
+		transition: transform 2s .2s; 
+	}
+
+    .page-navigation {
+		display: none;
+    }
+
+    .page-navigation--visible {
+		display: block;
     }
 }

@@ -3,19 +3,25 @@
 
 <head>
     <title>6BM Band Official Website</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=latin-ext"
+          rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./style.css" />
-	<script src="./js/main.js"></script>
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
     <header class="page-header">
-		<img class="page-hamburger" src="./images/hamburger_menu.svg" alt="Hamburger menu icon" />
         <h1 class="page-brand">
             <img src="./images/logo.png" alt="6BM logo" />
         </h1>
-        <nav class="page-navigation changing_nav">
+        <button id="hamburger" class="button menu-button">
+            <img class="menu-line" src="./images/hamburger_menu_line.png" alt="part of hamburger menu icon" />
+			<img class="menu-line" src="./images/hamburger_menu_line.png" alt="part of hamburger menu icon" />
+			<img class="menu-line" src="./images/hamburger_menu_line.png" alt="part of hamburger menu icon" />
+        </button>
+        <nav class="page-navigation">
             <ul class="page-navigation__items">
                 <li class="page-navigation__item">
                     <a class="page-navigation__link" href="#home">Home</a>
@@ -118,7 +124,7 @@
                             <p class="concerts__date">20.12.2018</p>
                             <p class="concerts__location">Lublin, klub XXX</p>
                         </div>
-                        <button class="button">Buy a ticket</button>
+                        <button class="button button--buy-ticket">Buy a ticket</button>
                     </header>
                 </article>
                 <article class="concerts__item">
@@ -129,7 +135,7 @@
                             <p class="concerts__date">20.12.2018</p>
                             <p class="concerts__location">Lublin, klub XXX</p>
                         </div>
-                        <button class="button">Buy a ticket</button>
+                        <button class="button button--buy-ticket">Buy a ticket</button>
                     </header>
                 </article>
                 <article class="concerts__item">
@@ -140,7 +146,7 @@
                             <p class="concerts__date">20.12.2018</p>
                             <p class="concerts__location">Lublin, klub XXX</p>
                         </div>
-                        <button class="button">Buy a ticket</button>
+                        <button class="button button--buy-ticket">Buy a ticket</button>
                     </header>
                 </article>
                 <article class="concerts__item">
@@ -151,7 +157,7 @@
                             <p class="concerts__date">20.12.2018</p>
                             <p class="concerts__location">Lublin, klub XXX</p>
                         </div>
-                        <button class="button">Buy a ticket</button>
+                        <button class="button button--buy-ticket">Buy a ticket</button>
                     </header>
                 </article>
             </div>
@@ -207,7 +213,7 @@
                 </li>
                 <li class="gallery__item">
                     <img class="gallery__image"
-                        srcset="./images/band10.jpg
+                        srcset="./images/band10.jpg,
                                 ./images/band10@2.jpg 2x,
                                 ./images/band10@3.jpg 3x"
                         src="./images/band10@3.jpg"
@@ -215,7 +221,7 @@
                 </li>
                 <li class="gallery__item">
                     <img class="gallery__image"
-                        srcset="./images/band11.jpg
+                        srcset="./images/band11.jpg,
                                 ./images/band11@2.jpg 2x,
                                 ./images/band11@3.jpg 3x"
                         src="./images/band11@3.jpg"
@@ -223,7 +229,7 @@
                 </li>
                 <li class="gallery__item">
                     <img class="gallery__image"
-                        srcset="./images/band04_JakubBodys.jpg
+                        srcset="./images/band04_JakubBodys.jpg,
                                 ./images/band04_JakubBodys@2.jpg 2x,
                                 ./images/band04_JakubBodys@3.jpg 3x"
                         src="./images/band04_JakubBodys@3.jpg"
@@ -231,7 +237,7 @@
                 </li>
                 <li class="gallery__item">
                     <img class="gallery__image"
-                        srcset="./images/band03_WiechnikMarcin.jpg
+                        srcset="./images/band03_WiechnikMarcin.jpg,
                                 ./images/band03_WiechnikMarcin@2.jpg 2x,
                                 ./images/band03_WiechnikMarcin@3.jpg 3x"
                         src="./images/band03_WiechnikMarcin@3.jpg"
